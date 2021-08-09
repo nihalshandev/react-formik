@@ -7,6 +7,7 @@ const YoutubeForm = () => {
     name: "",
     email: "",
     channel: "",
+    comments: "",
   };
 
   const onSubmit = (values) => {
@@ -34,7 +35,7 @@ const YoutubeForm = () => {
       <Form>
         <div className="form-control">
           <label htmlFor="name">Name</label>
-          <Field type="text" id="name" name="name" />
+          <Field type="text" id="name" name="name" placeholder="Your Name" />
 
           <ErrorMessage name="name" />
         </div>
@@ -48,6 +49,11 @@ const YoutubeForm = () => {
           <label htmlFor="channel">Channel</label>
           <Field type="text" id="channel" name="channel" />
           <ErrorMessage name="channel" />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="comments">Commentes</label>
+          <Field id="comments" name="comments" component="textarea" />
         </div>
 
         <button type="submit">Submit</button>
