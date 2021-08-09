@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import TextError from "./TextError";
 
 const YoutubeForm = () => {
   const initialValues = {
@@ -37,13 +38,17 @@ const YoutubeForm = () => {
           <label htmlFor="name">Name</label>
           <Field type="text" id="name" name="name" placeholder="Your Name" />
 
-          <ErrorMessage name="name" />
+          <ErrorMessage name="name" component={TextError} />
         </div>
         <div className="form-control">
           <label htmlFor="email">E-mail</label>
           <Field type="text" id="email" name="email" />
 
-          <ErrorMessage name="email" />
+          <ErrorMessage name="email" >
+            {
+              errorMsg => <div className="error">{errorMsg}</div>
+            }
+          </ErrorMessage>
         </div>
         <div className="form-control">
           <label htmlFor="channel">Channel</label>
@@ -60,9 +65,7 @@ const YoutubeForm = () => {
           <label htmlFor="address">Address</label>
           <Field name="address">
             {(props) => {
-              {
                 /* console.log('Render props', props) */
-              }
               const { field, Form, meta } = props;
               return (
                 <div>
